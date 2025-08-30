@@ -37,7 +37,7 @@ export default function Dashboard() {
 
   return (
     <main className="min-h-screen bg-[#0b1220] text-slate-100">
-      <div className="mx-auto w-full max-w-5xl px-6 py-10">
+      <div className="mx-auto w-full max-w-5xl px-6 py-12">
         <header className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-fuchsia-500" />
@@ -47,14 +47,15 @@ export default function Dashboard() {
         </header>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 shadow-sm">
+          {/* Inputs card (more contrast) */}
+          <div className="rounded-2xl border border-white/15 bg-[#0f1a2d] p-6 shadow-sm">
             <label className="text-sm font-medium text-slate-200">
               Paste a review
               <textarea
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 placeholder='e.g., "Food was great but we waited 35 minutes…"'
-                className="mt-2 h-44 w-full resize-vertical rounded-xl border border-white/10 bg-slate-900 text-slate-100 placeholder:text-slate-400 p-3 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-2 h-44 w-full resize-vertical rounded-xl border border-white/12 bg-[#0b1220] text-slate-100 placeholder:text-slate-400 p-3 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </label>
 
@@ -84,25 +85,26 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 shadow-sm">
+          {/* Output card (more contrast) */}
+          <div className="rounded-2xl border border-white/15 bg-[#0f1a2d] p-6 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
               <h2 className="text-sm font-medium text-slate-200">Draft reply</h2>
               <button
                 onClick={copy}
                 disabled={!reply}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/12 px-3 py-1.5 text-xs font-medium hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 📋 Copy
               </button>
             </div>
-            <div className="min-h-40 rounded-xl border border-white/10 bg-slate-900 p-4 text-sm text-slate-100">
+            <div className="min-h-40 rounded-xl border border-white/12 bg-[#0b1220] p-4 text-sm text-slate-100">
               {reply ? reply : <span className="text-slate-400">Your AI reply will appear here…</span>}
             </div>
             {!!reply && (
               <div className="mt-4">
                 <button
                   onClick={generate}
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium hover:bg-white/5"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/12 px-3 py-1.5 text-xs font-medium hover:bg-white/5"
                 >
                   🔁 Regenerate
                 </button>
@@ -119,8 +121,11 @@ function Picker({ label, value, setValue, options }:{label:string; value:string;
   return (
     <label className="text-sm font-medium text-slate-200">
       {label}
-      <select value={value} onChange={(e)=>setValue(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-white/10 bg-slate-900 p-2 text-sm text-slate-100 focus:ring-2 focus:ring-indigo-500">
+      <select
+        value={value}
+        onChange={(e)=>setValue(e.target.value)}
+        className="mt-2 w-full rounded-lg border border-white/12 bg-[#0b1220] p-2 text-sm text-slate-100 focus:ring-2 focus:ring-indigo-500"
+      >
         {options.map(o=><option key={o} value={o}>{o}</option>)}
       </select>
     </label>
@@ -130,8 +135,11 @@ function Input({ label, value, setValue }:{label:string; value:string; setValue:
   return (
     <label className="mt-4 block text-sm font-medium text-slate-200">
       {label}
-      <input value={value} onChange={(e)=>setValue(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-white/10 bg-slate-900 p-2 text-sm text-slate-100 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500"/>
+      <input
+        value={value}
+        onChange={(e)=>setValue(e.target.value)}
+        className="mt-2 w-full rounded-lg border border-white/12 bg-[#0b1220] p-2 text-sm text-slate-100 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500"
+      />
     </label>
   );
 }
