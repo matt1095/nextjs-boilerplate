@@ -57,6 +57,7 @@ function Header() {
           <a href="#how" className="hover:text-neutral-600">How it works</a>
           <a href="#pricing" className="hover:text-neutral-600">Pricing</a>
           <a href="#faq" className="hover:text-neutral-600">FAQ</a>
+          <a href="/dashboard" className="hover:text-neutral-600">Dashboard</a>
         </nav>
         <a
           href={CHECKOUT_BASIC_URL}
@@ -253,9 +254,7 @@ function Pricing() {
         {tiers.map((t) => (
           <div
             key={t.name}
-            className={`rounded-2xl border p-6 shadow-sm ${
-              t.highlighted ? "border-indigo-200 bg-gradient-to-b from-white to-indigo-50" : "border-neutral-200 bg-white"
-            }`}
+            className={`rounded-2xl border p-6 shadow-sm ${t.highlighted ? "border-indigo-200 bg-gradient-to-b from-white to-indigo-50" : "border-neutral-200 bg-white"}`}
           >
             <h3 className="text-xl font-semibold">{t.name}</h3>
             <p className="mt-1 text-3xl font-extrabold">{t.price}</p>
@@ -322,7 +321,7 @@ function CTA() {
           >
             Start free (Basic)
           </a>
-        <a
+          <a
             href={CHECKOUT_PRO_URL}
             target="_blank"
             rel="noopener noreferrer"
