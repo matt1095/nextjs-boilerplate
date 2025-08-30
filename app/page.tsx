@@ -1,103 +1,149 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main>
+      <header className="nav">
+        <div className="container">
+          <div className="brand">Repute</div>
+          <a href="#cta" className="btn btn-dark">Start free</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      <section className="hero">
+        <div className="blob" aria-hidden></div>
+        <div className="container hero-inner">
+          <motion.h1 initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:.5}}>
+            AI replies for Google & Yelp reviews
+          </motion.h1>
+          <p className="lead">
+            Repute drafts warm, on-brand responses to every review—good, bad, or neutral—so you protect your reputation in minutes, not hours.
+          </p>
+          <div className="cta-row">
+            <a href="#cta" className="btn btn-gradient">Start free</a>
+            <a href="#how" className="btn btn-outline">See how it works</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="section">
+        <div className="container">
+          <h2>How it works</h2>
+          <div className="grid">
+            <Card title="Paste a review" desc="Drop in any Google/Yelp/Facebook/TripAdvisor review." />
+            <Card title="Pick the tone" desc="Friendly, professional, apologetic, cheerful." />
+            <Card title="Copy & post" desc="One click to copy. Edit if you want. Done." />
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
+        <div className="container">
+          <h2>Why teams use Repute</h2>
+          <div className="grid">
+            <Card title="Consistent tone" desc="On-brand replies every time." />
+            <Card title="Ridiculously fast" desc="Clear your weekly reviews in under 5 minutes." />
+            <Card title="Multilingual" desc="Reply in English or French." />
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="section">
+        <div className="container">
+          <h2>Simple pricing</h2>
+          <div className="pricing">
+            <Price name="Basic" price="$29/mo" items={["Unlimited replies","Tone presets","Copy to clipboard"]}/>
+            <Price name="Pro" price="$49/mo" items={["Everything in Basic","Saved templates","Multi-language"]}/>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" className="cta">
+        <div className="container cta-inner">
+          <h3>Ready to reply like a pro?</h3>
+          <p>Start a free trial—no credit card required.</p>
+          <div className="cta-row">
+            <a href="#" className="btn btn-light">Start free</a>
+            <a href="#pricing" className="btn btn-outline-light">See pricing</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container footer-inner">
+          <p>© {new Date().getFullYear()} Repute</p>
+          <div className="links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#how">Help</a>
+          </div>
+        </div>
       </footer>
+
+      <style jsx>{`
+        *{box-sizing:border-box} html,body,main{margin:0;padding:0}
+        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial}
+        .container{max-width:1100px;margin:0 auto;padding:0 20px}
+        .nav{position:sticky;top:0;background:#fff;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e5e7eb}
+        .nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+        .brand{font-weight:600}
+        .btn{display:inline-block;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid transparent}
+        .btn-dark{background:#111;color:#fff}
+        .btn-gradient{background:linear-gradient(90deg,#6366f1,#d946ef);color:#fff;box-shadow:0 10px 30px rgba(217,70,239,.25)}
+        .btn-outline{border-color:#e5e7eb;color:#111;background:#fff}
+        .btn-light{background:#fff;color:#111}
+        .btn-outline-light{border-color:#fff;color:#fff}
+        .hero{position:relative;overflow:hidden;background:#fff}
+        .blob{position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 300px at 50% -10%, rgba(99,102,241,.25), transparent 70%)}
+        .hero-inner{padding:80px 0;text-align:center}
+        h1{font-size:40px;line-height:1.1;margin:0}
+        .lead{color:#6b7280;max-width:720px;margin:14px auto 0}
+        .cta-row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+        .section{padding:64px 0}
+        .section-alt{background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee}
+        h2{font-size:32px;margin:0 0 8px 0;text-align:center}
+        .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
+        .card{border:1px solid #e5e7eb;border-radius:16px;padding:18px;background:#fff}
+        .pricing{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:20px}
+        .price{border:1px solid #e5e7eb;border-radius:16px;padding:18px;background:#fff;text-align:left}
+        .price h3{margin:0;font-size:20px}
+        .price .amount{font-size:28px;font-weight:800;margin:6px 0}
+        .cta{padding:72px 0;background:linear-gradient(90deg,#6366f1,#d946ef);color:#fff}
+        .cta-inner{text-align:center}
+        .footer{border-top:1px solid #eee;padding:28px 0;background:#fff}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+        .links a{margin-left:16px;color:#111;text-decoration:none}
+        @media (max-width:640px){h1{font-size:32px}}
+      `}</style>
+    </main>
+  );
+}
+
+function Card({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="card">
+      <h3 style={{margin:0,fontSize:18,fontWeight:600}}>{title}</h3>
+      <p style={{marginTop:8,color:"#6b7280",fontSize:14,lineHeight:1.5}}>{desc}</p>
+    </div>
+  );
+}
+
+function Price({ name, price, items }:{name:string; price:string; items:string[]}) {
+  return (
+    <div className="price">
+      <h3>{name}</h3>
+      <p className="amount">{price}</p>
+      <ul style={{listStyle:"none",padding:0,margin:0}}>
+        {items.map(i=>(
+          <li key={i} style={{display:"flex",alignItems:"center",gap:8,margin:"8px 0"}}>
+            <CheckCircle2 size={18} /> {i}
+          </li>
+        ))}
+      </ul>
+      <a href="#cta" className="btn btn-dark" style={{display:"block",marginTop:16,textAlign:"center"}}>Start free</a>
     </div>
   );
 }
