@@ -1,149 +1,181 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import {
+  Sparkles,
+  MessageSquare,
+  ShieldCheck,
+  Rocket,
+  Languages,
+  Clock4,
+  CopyCheck,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <main>
-      <header className="nav">
-        <div className="container">
-          <div className="brand">Repute</div>
-          <a href="#cta" className="btn btn-dark">Start free</a>
-        </div>
-      </header>
-
-      <section className="hero">
-        <div className="blob" aria-hidden></div>
-        <div className="container hero-inner">
-          <motion.h1 initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} transition={{duration:.5}}>
-            AI replies for Google & Yelp reviews
-          </motion.h1>
-          <p className="lead">
-            Repute drafts warm, on-brand responses to every review—good, bad, or neutral—so you protect your reputation in minutes, not hours.
-          </p>
-          <div className="cta-row">
-            <a href="#cta" className="btn btn-gradient">Start free</a>
-            <a href="#how" className="btn btn-outline">See how it works</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="how" className="section">
-        <div className="container">
-          <h2>How it works</h2>
-          <div className="grid">
-            <Card title="Paste a review" desc="Drop in any Google/Yelp/Facebook/TripAdvisor review." />
-            <Card title="Pick the tone" desc="Friendly, professional, apologetic, cheerful." />
-            <Card title="Copy & post" desc="One click to copy. Edit if you want. Done." />
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt">
-        <div className="container">
-          <h2>Why teams use Repute</h2>
-          <div className="grid">
-            <Card title="Consistent tone" desc="On-brand replies every time." />
-            <Card title="Ridiculously fast" desc="Clear your weekly reviews in under 5 minutes." />
-            <Card title="Multilingual" desc="Reply in English or French." />
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" className="section">
-        <div className="container">
-          <h2>Simple pricing</h2>
-          <div className="pricing">
-            <Price name="Basic" price="$29/mo" items={["Unlimited replies","Tone presets","Copy to clipboard"]}/>
-            <Price name="Pro" price="$49/mo" items={["Everything in Basic","Saved templates","Multi-language"]}/>
-          </div>
-        </div>
-      </section>
-
-      <section id="cta" className="cta">
-        <div className="container cta-inner">
-          <h3>Ready to reply like a pro?</h3>
-          <p>Start a free trial—no credit card required.</p>
-          <div className="cta-row">
-            <a href="#" className="btn btn-light">Start free</a>
-            <a href="#pricing" className="btn btn-outline-light">See pricing</a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="container footer-inner">
-          <p>© {new Date().getFullYear()} Repute</p>
-          <div className="links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#how">Help</a>
-          </div>
-        </div>
-      </footer>
-
-      <style jsx>{`
-        *{box-sizing:border-box} html,body,main{margin:0;padding:0}
-        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial}
-        .container{max-width:1100px;margin:0 auto;padding:0 20px}
-        .nav{position:sticky;top:0;background:#fff;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #e5e7eb}
-        .nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-        .brand{font-weight:600}
-        .btn{display:inline-block;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid transparent}
-        .btn-dark{background:#111;color:#fff}
-        .btn-gradient{background:linear-gradient(90deg,#6366f1,#d946ef);color:#fff;box-shadow:0 10px 30px rgba(217,70,239,.25)}
-        .btn-outline{border-color:#e5e7eb;color:#111;background:#fff}
-        .btn-light{background:#fff;color:#111}
-        .btn-outline-light{border-color:#fff;color:#fff}
-        .hero{position:relative;overflow:hidden;background:#fff}
-        .blob{position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 300px at 50% -10%, rgba(99,102,241,.25), transparent 70%)}
-        .hero-inner{padding:80px 0;text-align:center}
-        h1{font-size:40px;line-height:1.1;margin:0}
-        .lead{color:#6b7280;max-width:720px;margin:14px auto 0}
-        .cta-row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-        .section{padding:64px 0}
-        .section-alt{background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee}
-        h2{font-size:32px;margin:0 0 8px 0;text-align:center}
-        .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
-        .card{border:1px solid #e5e7eb;border-radius:16px;padding:18px;background:#fff}
-        .pricing{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:20px}
-        .price{border:1px solid #e5e7eb;border-radius:16px;padding:18px;background:#fff;text-align:left}
-        .price h3{margin:0;font-size:20px}
-        .price .amount{font-size:28px;font-weight:800;margin:6px 0}
-        .cta{padding:72px 0;background:linear-gradient(90deg,#6366f1,#d946ef);color:#fff}
-        .cta-inner{text-align:center}
-        .footer{border-top:1px solid #eee;padding:28px 0;background:#fff}
-        .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-        .links a{margin-left:16px;color:#111;text-decoration:none}
-        @media (max-width:640px){h1{font-size:32px}}
-      `}</style>
-    </main>
-  );
-}
-
-function Card({ title, desc }: { title: string; desc: string }) {
-  return (
-    <div className="card">
-      <h3 style={{margin:0,fontSize:18,fontWeight:600}}>{title}</h3>
-      <p style={{marginTop:8,color:"#6b7280",fontSize:14,lineHeight:1.5}}>{desc}</p>
+    <div className="min-h-screen bg-white text-neutral-900">
+      <Header />
+      <main>
+        <Hero />
+        <SocialProof />
+        <HowItWorks />
+        <Features />
+        <Pricing />
+        <FAQ />
+        <CTA />
+      </main>
+      <Footer />
     </div>
   );
 }
 
-function Price({ name, price, items }:{name:string; price:string; items:string[]}) {
+/* ---------- Layout helpers ---------- */
+function Section({
+  id,
+  children,
+  className = "",
+}: {
+  id?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="price">
-      <h3>{name}</h3>
-      <p className="amount">{price}</p>
-      <ul style={{listStyle:"none",padding:0,margin:0}}>
-        {items.map(i=>(
-          <li key={i} style={{display:"flex",alignItems:"center",gap:8,margin:"8px 0"}}>
-            <CheckCircle2 size={18} /> {i}
-          </li>
-        ))}
-      </ul>
-      <a href="#cta" className="btn btn-dark" style={{display:"block",marginTop:16,textAlign:"center"}}>Start free</a>
-    </div>
+    <section id={id} className={`py-16 sm:py-24 ${className}`}>
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
+    </section>
   );
 }
+
+/* ---------- Header ---------- */
+function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-neutral-200/60 bg-white/80 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#" className="flex items-center gap-2">
+          <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500" />
+          <span className="text-lg font-semibold tracking-tight">Repute</span>
+        </a>
+        <nav className="hidden items-center gap-6 text-sm md:flex">
+          <a href="#how" className="hover:text-neutral-600">How it works</a>
+          <a href="#pricing" className="hover:text-neutral-600">Pricing</a>
+          <a href="#faq" className="hover:text-neutral-600">FAQ</a>
+        </nav>
+        <a
+          href="#cta"
+          className="rounded-xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow hover:opacity-90"
+        >
+          Start free
+        </a>
+      </div>
+    </header>
+  );
+}
+
+/* ---------- Hero ---------- */
+function Hero() {
+  return (
+    <Section className="relative overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="-top-24 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-500/25 via-fuchsia-500/20 to-rose-500/20 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-3xl text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 text-xs font-medium tracking-tight"
+        >
+          <Sparkles size={14} /> New: Reply to reviews in seconds
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="text-4xl font-extrabold tracking-tight sm:text-6xl"
+        >
+          AI replies for Google & Yelp reviews
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-4 text-lg text-neutral-600"
+        >
+          Repute drafts warm, on-brand responses to every review—good, bad, or neutral—so
+          you protect your reputation in minutes, not hours.
+        </motion.p>
+
+        <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="#cta"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-6 py-3 text-white shadow-lg hover:shadow-xl"
+          >
+            Start free
+          </a>
+          <a
+            href="#how"
+            className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 px-6 py-3 text-sm font-medium hover:bg-neutral-100"
+          >
+            See how it works
+          </a>
+        </div>
+
+        {/* Simple mock “screenshot” */}
+        <div className="mx-auto mt-10 w-full max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+          <div className="flex items-center gap-2 border-b border-neutral-200 px-3 py-2">
+            <div className="h-3 w-3 rounded-full bg-red-400" />
+            <div className="h-3 w-3 rounded-full bg-amber-400" />
+            <div className="h-3 w-3 rounded-full bg-emerald-400" />
+            <span className="ml-2 text-xs text-neutral-500">Repute — Review Reply Draft</span>
+          </div>
+          <div className="grid gap-0 p-6 sm:grid-cols-2 sm:gap-6">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
+                Pasted review
+              </p>
+              <div className="mt-2 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700">
+                “Food was great but we waited 35 minutes to be seated…”
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
+                Draft reply
+              </p>
+              <div className="mt-2 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700">
+                Thanks for sharing this, Alex—sorry about the wait. That’s not the experience we aim
+                for. Please email us at hello@getrepute.ca so we can make it right.
+              </div>
+              <div className="mt-3 flex items-center gap-2 text-xs text-neutral-500">
+                <CopyCheck size={16} /> One-click copy
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- Social proof (optional logos) ---------- */
+function SocialProof() {
+  return (
+    <Section className="py-10">
+      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs text-neutral-500">
+        <span>Trusted by local salons, restaurants, and gyms</span>
+        <span className="hidden sm:inline">•</span>
+        <span>Reply in English & French</span>
+        <span className="hidden sm:inline">•</span>
+        <span>Works with Google, Yelp, Facebook, TripAdvisor</span>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- How it works ---------- */
+function HowItWorks() {
+  const steps = [
+    { icon: Messa
