@@ -11,8 +11,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing review text" }, { status: 400 });
     }
 
-    // Guardrails
-    const trimmed = review.slice(0, 2000); // cap input
+    const trimmed = review.slice(0, 2000);
     const toneMap: Record<string, string> = {
       friendly: "warm, appreciative, and human",
       professional: "calm, concise, and courteous",
@@ -31,7 +30,7 @@ Rules:
 - Match the platform norms (platform: ${platform}).
 - Language: ${language}.
 - Business name: ${businessName}.
-- If a sign-off is provided, end with it (otherwise no signature).
+- If a sign-off is provided, end with it.
 `;
 
     const user = `
@@ -44,19 +43,12 @@ Write the business reply now.
 ${signoff ? `Sign-off: ${signoff}` : ""}
 `;
 
-    // Call OpenAI (Chat Completions)
     const resp = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
+      headers: { "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: system },
-          { role: "user", content: user },
-        ],
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
         temperature: 0.5,
         max_tokens: 220,
       }),
