@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 
 export default function Page() {
-  // Demo state for the mock preview (no API call here)
+  // Demo state (for the homepage preview only)
   const [langFR, setLangFR] = useState(false);
   const [tone, setTone] = useState<"friendly" | "professional" | "apologetic" | "cheerful">("friendly");
 
@@ -63,9 +63,7 @@ export default function Page() {
 
         <div className="mx-auto max-w-7xl px-6 pt-20 pb-12 md:pt-32 md:pb-20">
           <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300">New — Reply to reviews in seconds</p>
-          <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">
-            AI replies for Google & Yelp reviews
-          </h1>
+          <h1 className="mt-3 text-4xl md:text-6xl font-extrabold leading-tight">AI replies for Google & Yelp reviews</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-300">
             Draft warm, on-brand responses to every review—good, bad, or neutral—in minutes, not hours.
           </p>
@@ -88,10 +86,10 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Product demo */}
-        <div className="mx-auto max-w-6xl px-6 pb-10">
-          <div className="rounded-2xl border border-white/10 bg-slate-900/50 shadow-lg">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+        {/* Product demo (INCREASED CONTRAST) */}
+        <div className="mx-auto max-w-6xl px-6 pb-12">
+          <div className="rounded-2xl border border-white/15 bg-[#0f1a2d] shadow-xl">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/12">
               <div className="text-sm font-semibold text-slate-200">Repute — Draft preview</div>
               <div className="flex items-center gap-3 text-xs text-slate-300">
                 <label className="inline-flex items-center gap-2 cursor-pointer select-none">
@@ -105,7 +103,7 @@ export default function Page() {
                 <select
                   value={tone}
                   onChange={(e) => setTone(e.target.value as any)}
-                  className="rounded-lg border border-white/10 bg-slate-900/60 px-2 py-1 text-xs"
+                  className="rounded-lg border border-white/15 bg-[#0b1220] px-2 py-1 text-xs"
                 >
                   <option value="friendly">Friendly</option>
                   <option value="professional">Professional</option>
@@ -116,21 +114,21 @@ export default function Page() {
             </div>
 
             <div className="grid md:grid-cols-2">
-              <div className="p-5 md:p-6 border-b md:border-b-0 md:border-r border-white/10">
+              <div className="p-5 md:p-6 border-b md:border-b-0 md:border-r border-white/12">
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Pasted review</p>
-                <div className="mt-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-4 text-sm text-slate-200">
+                <div className="mt-2 rounded-xl bg-[#0b1220] ring-1 ring-white/12 p-4 text-sm text-slate-200">
                   “Food was great but we waited 35 minutes to be seated…”
                 </div>
               </div>
               <div className="p-5 md:p-6">
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Draft reply</p>
-                <div className="mt-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-4 text-sm min-h-[96px] whitespace-pre-wrap text-slate-100">
+                <div className="mt-2 rounded-xl bg-[#0b1220] ring-1 ring-white/12 p-4 text-sm min-h-[96px] whitespace-pre-wrap text-slate-100">
                   {demoReply}
                 </div>
                 <div className="mt-4">
                   <button
                     onClick={copyDemo}
-                    className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-white bg-slate-800 hover:bg-slate-700 ring-1 ring-white/10"
+                    className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-white bg-slate-800 hover:bg-slate-700 ring-1 ring-white/12"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -146,8 +144,10 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Spacer */}
-      <section className="py-8 md:py-12" />
+      {/* Divider */}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
 
       {/* How it works */}
       <section id="how" className="mx-auto max-w-7xl px-6 py-24">
@@ -158,7 +158,7 @@ export default function Page() {
             { title: "Pick the tone", desc: "Friendly, professional, apologetic, or cheerful." },
             { title: "Copy & post", desc: "Edit if needed. Done in minutes." },
           ].map((s, i) => (
-            <div key={s.title} className="rounded-2xl border border-white/10 p-6 bg-slate-900/40">
+            <div key={s.title} className="rounded-2xl border border-white/15 p-6 bg-[#0f1a2d]">
               <div className="w-10 h-10 rounded-xl grid place-items-center bg-indigo-600 text-white text-sm">{i + 1}</div>
               <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{s.desc}</p>
@@ -168,7 +168,7 @@ export default function Page() {
       </section>
 
       {/* Features */}
-      <section className="mx-auto max-w-7xl px-6 py-24 bg-slate-900/30">
+      <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-6 md:grid-cols-4">
           {[
             { t: "Consistent tone", d: "On-brand, respectful replies every time." },
@@ -176,7 +176,7 @@ export default function Page() {
             { t: "Bilingual", d: "Reply in English or French." },
             { t: "Saves hours", d: "Owners and managers win back time." },
           ].map((f) => (
-            <div key={f.t} className="rounded-2xl border border-white/10 p-6 bg-slate-900/40">
+            <div key={f.t} className="rounded-2xl border border-white/15 p-6 bg-[#0f1a2d]">
               <h3 className="font-bold">{f.t}</h3>
               <p className="mt-2 text-sm text-slate-300">{f.d}</p>
             </div>
@@ -198,7 +198,7 @@ export default function Page() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {/* Basic */}
-          <div className="rounded-2xl border border-white/10 p-6 bg-slate-900/40">
+          <div className="rounded-2xl border border-white/15 p-6 bg-[#0f1a2d]">
             <h3 className="text-xl font-bold">Basic</h3>
             <p className="mt-2 text-sm text-slate-300">Single-location businesses.</p>
             <p className="mt-4 text-3xl font-extrabold">
@@ -219,7 +219,7 @@ export default function Page() {
           </div>
 
           {/* Pro */}
-          <div className="rounded-2xl border-2 border-indigo-500 p-6 bg-slate-900/40">
+          <div className="rounded-2xl border-2 border-indigo-500 p-6 bg-[#0f1a2d]">
             <div className="inline-flex items-center gap-2 rounded-full bg-indigo-600/10 text-indigo-300 px-3 py-1 text-xs font-semibold">
               Best value
             </div>
