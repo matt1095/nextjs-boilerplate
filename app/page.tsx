@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -7,10 +8,14 @@ import {
   ShieldCheck,
   Rocket,
   Languages,
-  Clock4,
   CopyCheck,
   CheckCircle2,
+  Clock, // safe across lucide versions
 } from "lucide-react";
+
+/** 🔗 Your Stripe Payment Link (test mode) */
+const CHECKOUT_URL =
+  "https://buy.stripe.com/test_fZucN74Y56mwgxb2TBbfO00";
 
 export default function Home() {
   return (
@@ -30,14 +35,14 @@ export default function Home() {
   );
 }
 
-/* ---------- Layout helpers ---------- */
+/* ---------- Small layout helper ---------- */
 function Section({
   id,
   children,
   className = "",
 }: {
   id?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   return (
@@ -52,7 +57,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-neutral-200/60 bg-white/80 backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-rose-500" />
           <span className="text-lg font-semibold tracking-tight">Repute</span>
         </a>
@@ -62,7 +67,9 @@ function Header() {
           <a href="#faq" className="hover:text-neutral-600">FAQ</a>
         </nav>
         <a
-          href="#cta"
+          href={CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow hover:opacity-90"
         >
           Start free
@@ -111,7 +118,9 @@ function Hero() {
 
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#cta"
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-6 py-3 text-white shadow-lg hover:shadow-xl"
           >
             Start free
@@ -124,7 +133,7 @@ function Hero() {
           </a>
         </div>
 
-        {/* Simple mock “screenshot” */}
+        {/* Mock “screenshot” */}
         <div className="mx-auto mt-10 w-full max-w-4xl overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
           <div className="flex items-center gap-2 border-b border-neutral-200 px-3 py-2">
             <div className="h-3 w-3 rounded-full bg-red-400" />
@@ -160,7 +169,7 @@ function Hero() {
   );
 }
 
-/* ---------- Social proof (optional logos) ---------- */
+/* ---------- Social proof ---------- */
 function SocialProof() {
   return (
     <Section className="py-10">
@@ -209,7 +218,7 @@ function Features() {
     { icon: ShieldCheck, title: "Consistent tone", desc: "On-brand, respectful replies every time." },
     { icon: Rocket, title: "Ridiculously fast", desc: "Clear your weekly reviews in under 5 minutes." },
     { icon: Languages, title: "Multilingual", desc: "Reply in English or French (more soon)." },
-    { icon: Clock4, title: "Save hours", desc: "Owners and managers win back their time." },
+    { icon: Clock, title: "Save hours", desc: "Owners and managers win back their time." },
   ];
 
   return (
@@ -277,12 +286,10 @@ function Pricing() {
               ))}
             </ul>
             <a
-              href="#cta"
-              className={`mt-6 inline-block w-full rounded-xl px-4 py-2 text-center font-medium ${
-                t.highlighted
-                  ? "bg-neutral-900 text-white hover:opacity-90"
-                  : "bg-neutral-900 text-white hover:opacity-90"
-              }`}
+              href={CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block w-full rounded-xl bg-neutral-900 px-4 py-2 text-center font-medium text-white hover:opacity-90"
             >
               {t.cta}
             </a>
@@ -334,10 +341,18 @@ function CTA() {
           Start a free trial—no credit card required. Upgrade when you’re ready.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a href="#" className="rounded-xl bg-white px-5 py-3 font-semibold text-neutral-900 hover:opacity-90">
+          <a
+            href={CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-white px-5 py-3 font-semibold text-neutral-900 hover:opacity-90"
+          >
             Start free
           </a>
-          <a href="#pricing" className="rounded-xl bg-white/10 px-5 py-3 font-semibold text-white hover:bg-white/20">
+          <a
+            href="#pricing"
+            className="rounded-xl bg-white/10 px-5 py-3 font-semibold text-white hover:bg-white/20"
+          >
             See pricing
           </a>
         </div>
