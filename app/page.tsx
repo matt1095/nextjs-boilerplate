@@ -10,12 +10,12 @@ import {
   Languages,
   CopyCheck,
   CheckCircle2,
-  Clock, // safe across lucide versions
+  Clock,
 } from "lucide-react";
 
-/** 🔗 Your Stripe Payment Link (test mode) */
-const CHECKOUT_URL =
-  "https://buy.stripe.com/test_fZucN74Y56mwgxb2TBbfO00";
+/** 🔗 Stripe Payment Links (TEST mode) */
+const CHECKOUT_BASIC_URL = "https://buy.stripe.com/test_fZucN74Y56mwgxb2TBbfO00"; // Basic $29/mo
+const CHECKOUT_PRO_URL   = "https://buy.stripe.com/test_00w00lfCJdOY0yd1PxbfO01"; // Pro   $49/mo
 
 export default function Home() {
   return (
@@ -35,16 +35,8 @@ export default function Home() {
   );
 }
 
-/* ---------- Small layout helper ---------- */
-function Section({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
+/* ---------- Layout helper ---------- */
+function Section({ id, children, className = "" }: { id?: string; children: ReactNode; className?: string }) {
   return (
     <section id={id} className={`py-16 sm:py-24 ${className}`}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
@@ -67,7 +59,7 @@ function Header() {
           <a href="#faq" className="hover:text-neutral-600">FAQ</a>
         </nav>
         <a
-          href={CHECKOUT_URL}
+          href={CHECKOUT_BASIC_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow hover:opacity-90"
@@ -112,13 +104,12 @@ function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-4 text-lg text-neutral-600"
         >
-          Repute drafts warm, on-brand responses to every review—good, bad, or neutral—so
-          you protect your reputation in minutes, not hours.
+          Repute drafts warm, on-brand responses to every review—good, bad, or neutral—so you protect your reputation in minutes, not hours.
         </motion.p>
 
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href={CHECKOUT_URL}
+            href={CHECKOUT_BASIC_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-6 py-3 text-white shadow-lg hover:shadow-xl"
@@ -143,20 +134,15 @@ function Hero() {
           </div>
           <div className="grid gap-0 p-6 sm:grid-cols-2 sm:gap-6">
             <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
-                Pasted review
-              </p>
+              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">Pasted review</p>
               <div className="mt-2 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700">
                 “Food was great but we waited 35 minutes to be seated…”
               </div>
             </div>
             <div>
-              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">
-                Draft reply
-              </p>
+              <p className="text-xs font-medium uppercase tracking-wider text-neutral-500">Draft reply</p>
               <div className="mt-2 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700">
-                Thanks for sharing this, Alex—sorry about the wait. That’s not the experience we aim
-                for. Please email us at hello@getrepute.ca so we can make it right.
+                Thanks for sharing this, Alex—sorry about the wait. That’s not the experience we aim for. Please email us at hello@getrepute.ca so we can make it right.
               </div>
               <div className="mt-3 flex items-center gap-2 text-xs text-neutral-500">
                 <CopyCheck size={16} /> One-click copy
@@ -191,7 +177,6 @@ function HowItWorks() {
     { icon: Sparkles, title: "Pick the tone", desc: "Friendly, professional, apologetic, cheerful—your call." },
     { icon: CopyCheck, title: "Copy & post", desc: "One click to copy. Edit if you want. All set." },
   ];
-
   return (
     <Section id="how" className="bg-neutral-950 text-white">
       <div className="mx-auto max-w-3xl text-center">
@@ -220,7 +205,6 @@ function Features() {
     { icon: Languages, title: "Multilingual", desc: "Reply in English or French (more soon)." },
     { icon: Clock, title: "Save hours", desc: "Owners and managers win back their time." },
   ];
-
   return (
     <Section className="border-y border-neutral-200/80 bg-neutral-50">
       <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
@@ -246,14 +230,14 @@ function Pricing() {
       price: "$29/mo",
       blurb: "Perfect for single-location businesses.",
       features: ["Unlimited replies", "Tone presets", "Copy to clipboard"],
-      cta: "Start free",
+      url: CHECKOUT_BASIC_URL,
     },
     {
       name: "Pro",
       price: "$49/mo",
       blurb: "For growing teams and multi-location.",
       features: ["Everything in Basic", "Saved templates", "Multi-language"],
-      cta: "Start free",
+      url: CHECKOUT_PRO_URL,
       highlighted: true,
     },
   ];
@@ -270,9 +254,7 @@ function Pricing() {
           <div
             key={t.name}
             className={`rounded-2xl border p-6 shadow-sm ${
-              t.highlighted
-                ? "border-indigo-200 bg-gradient-to-b from-white to-indigo-50"
-                : "border-neutral-200 bg-white"
+              t.highlighted ? "border-indigo-200 bg-gradient-to-b from-white to-indigo-50" : "border-neutral-200 bg-white"
             }`}
           >
             <h3 className="text-xl font-semibold">{t.name}</h3>
@@ -286,12 +268,12 @@ function Pricing() {
               ))}
             </ul>
             <a
-              href={CHECKOUT_URL}
+              href={t.url}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-block w-full rounded-xl bg-neutral-900 px-4 py-2 text-center font-medium text-white hover:opacity-90"
             >
-              {t.cta}
+              Start free
             </a>
           </div>
         ))}
@@ -303,17 +285,10 @@ function Pricing() {
 /* ---------- FAQ ---------- */
 function FAQ() {
   const items = [
-    {
-      q: "Does this work for negative reviews?",
-      a: "Yes. Choose an apologetic or professional tone—Repute drafts a calm, human response you can tweak.",
-    },
-    {
-      q: "Which platforms are supported?",
-      a: "Google, Yelp, Facebook, and TripAdvisor. Paste the review text to start; direct integrations are coming.",
-    },
+    { q: "Does this work for negative reviews?", a: "Yes. Choose an apologetic or professional tone—Repute drafts a calm, human response you can tweak." },
+    { q: "Which platforms are supported?", a: "Google, Yelp, Facebook, and TripAdvisor. Paste the review text to start; direct integrations are coming." },
     { q: "Can I cancel anytime?", a: "Absolutely. Plans are monthly with no contract." },
   ];
-
   return (
     <Section id="faq">
       <div className="mx-auto max-w-3xl">
@@ -337,23 +312,23 @@ function CTA() {
     <Section id="cta" className="py-16">
       <div className="mx-auto max-w-3xl rounded-2xl border border-neutral-200 bg-gradient-to-r from-indigo-600 to-fuchsia-600 p-8 text-white shadow-lg">
         <h3 className="text-3xl font-bold">Ready to reply like a pro?</h3>
-        <p className="mt-2 text-white/90">
-          Start a free trial—no credit card required. Upgrade when you’re ready.
-        </p>
+        <p className="mt-2 text-white/90">Start a free trial—no credit card required. Upgrade when you’re ready.</p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <a
-            href={CHECKOUT_URL}
+            href={CHECKOUT_BASIC_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl bg-white px-5 py-3 font-semibold text-neutral-900 hover:opacity-90"
           >
-            Start free
+            Start free (Basic)
           </a>
-          <a
-            href="#pricing"
+        <a
+            href={CHECKOUT_PRO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl bg-white/10 px-5 py-3 font-semibold text-white hover:bg-white/20"
           >
-            See pricing
+            Start free (Pro)
           </a>
         </div>
       </div>
