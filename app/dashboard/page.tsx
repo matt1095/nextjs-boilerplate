@@ -36,25 +36,25 @@ export default function Dashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="min-h-screen bg-[#0b1220] text-slate-100">
       <div className="mx-auto w-full max-w-5xl px-6 py-10">
         <header className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="h-8 w-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-fuchsia-500" />
             <h1 className="text-2xl font-bold tracking-tight">Repute Dashboard</h1>
           </div>
-          <a href="/" className="text-sm text-slate-600 hover:text-slate-900">← Back to site</a>
+          <a href="/" className="text-sm text-slate-300 hover:text-white">← Back to site</a>
         </header>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <label className="text-sm font-medium text-slate-700">
+          <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 shadow-sm">
+            <label className="text-sm font-medium text-slate-200">
               Paste a review
               <textarea
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
                 placeholder='e.g., "Food was great but we waited 35 minutes…"'
-                className="mt-2 h-44 w-full resize-vertical rounded-xl border border-slate-300 p-3 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-2 h-44 w-full resize-vertical rounded-xl border border-white/10 bg-slate-900 text-slate-100 placeholder:text-slate-400 p-3 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </label>
 
@@ -70,7 +70,7 @@ export default function Dashboard() {
             <button
               onClick={generate}
               disabled={disabled}
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? (
                 <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24">
@@ -84,25 +84,25 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 shadow-sm">
             <div className="mb-2 flex items-center justify-between">
-              <h2 className="text-sm font-medium text-slate-700">Draft reply</h2>
+              <h2 className="text-sm font-medium text-slate-200">Draft reply</h2>
               <button
                 onClick={copy}
                 disabled={!reply}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 📋 Copy
               </button>
             </div>
-            <div className="min-h-40 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-800">
-              {reply ? reply : <span className="text-slate-500">Your AI reply will appear here…</span>}
+            <div className="min-h-40 rounded-xl border border-white/10 bg-slate-900 p-4 text-sm text-slate-100">
+              {reply ? reply : <span className="text-slate-400">Your AI reply will appear here…</span>}
             </div>
             {!!reply && (
               <div className="mt-4">
                 <button
                   onClick={generate}
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-medium hover:bg-slate-100"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium hover:bg-white/5"
                 >
                   🔁 Regenerate
                 </button>
@@ -117,10 +117,10 @@ export default function Dashboard() {
 
 function Picker({ label, value, setValue, options }:{label:string; value:string; setValue:(v:string)=>void; options:string[]}) {
   return (
-    <label className="text-sm font-medium text-slate-700">
+    <label className="text-sm font-medium text-slate-200">
       {label}
       <select value={value} onChange={(e)=>setValue(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-slate-300 p-2 text-sm focus:ring-2 focus:ring-indigo-500">
+        className="mt-2 w-full rounded-lg border border-white/10 bg-slate-900 p-2 text-sm text-slate-100 focus:ring-2 focus:ring-indigo-500">
         {options.map(o=><option key={o} value={o}>{o}</option>)}
       </select>
     </label>
@@ -128,10 +128,10 @@ function Picker({ label, value, setValue, options }:{label:string; value:string;
 }
 function Input({ label, value, setValue }:{label:string; value:string; setValue:(v:string)=>void}) {
   return (
-    <label className="mt-4 block text-sm font-medium text-slate-700">
+    <label className="mt-4 block text-sm font-medium text-slate-200">
       {label}
       <input value={value} onChange={(e)=>setValue(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-slate-300 p-2 text-sm focus:ring-2 focus:ring-indigo-500"/>
+        className="mt-2 w-full rounded-lg border border-white/10 bg-slate-900 p-2 text-sm text-slate-100 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500"/>
     </label>
   );
 }
